@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Will You Be My Valentine?</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .card {
+      background: white;
+      padding: 40px 30px;
+      border-radius: 20px;
+      text-align: center;
+      max-width: 400px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+      animation: pop 1s ease;
+    }
+
+    @keyframes pop {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    h1 {
+      color: #ff4d6d;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: #555;
+      font-size: 16px;
+      margin-bottom: 30px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    button {
+      padding: 12px 25px;
+      border-radius: 30px;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .yes {
+      background: #ff4d6d;
+      color: white;
+    }
+
+    .yes:hover {
+      background: #e63950;
+    }
+
+    .no {
+      background: #eee;
+      color: #333;
+      position: relative;
+    }
+
+    .heart {
+      position: fixed;
+      bottom: -10px;
+      font-size: 24px;
+      animation: float 5s linear infinite;
+      color: rgba(255,255,255,0.8);
+    }
+
+    @keyframes float {
+      from { transform: translateY(0); opacity: 1; }
+      to { transform: translateY(-110vh); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>Sharvani ❤️</h1>
+    <p>From the moment you walked into my life, you made everything brighter.<br><br>
+       So I have just one important question for you…</p>
+    <h2>Will you be my Valentine? 💘</h2>
+
+    <div class="buttons">
+      <button class="yes" onclick="yesClicked()">Yes 💖</button>
+      <button class="no" disabled>No 🙈</button>
+    </div>
+  </div>
+
+  <script>
+    function yesClicked() {
+  document.body.innerHTML = '';
+
+  const card = document.createElement('div');
+  card.className = 'card';
+  card.innerHTML = `
+    <h1>She said YES 💕</h1>
+    <p>And just like that, my world feels warmer, brighter, and happier.</p>
+    <h2>Happy Valentine’s Day, Sharvani 💐</h2>
+    <p style="margin-top:20px; color:#777;">Thank you for choosing me. I promise to make you smile, laugh, and feel special—not just today, but every day ❤️</p>
+    <p style="margin-top:25px; font-weight:bold; color:#ff4d6d;">— Yours, Shawn</p>
+  `;
+
+  document.body.appendChild(card);
+
+  for (let i = 0; i < 40; i++) createHeart();
+}
+
+    function moveButton(btn) {
+      const x = Math.random() * (window.innerWidth - btn.offsetWidth);
+      const y = Math.random() * (window.innerHeight - btn.offsetHeight);
+      btn.style.position = 'fixed';
+      btn.style.left = x + 'px';
+      btn.style.top = y + 'px';
+    }
+
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.innerHTML = '❤️';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 5000);
+    }
+
+    setInterval(createHeart, 800);
+  </script>
+
+</body>
+</html>
